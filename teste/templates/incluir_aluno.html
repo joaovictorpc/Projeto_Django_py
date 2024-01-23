@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load django_bootstrap5 %}
+    <h2>Preencha os Campos</h2>
+    <form method="post">
+        {% bootstrap_form form %}
+        {% csrf_token %}
+        <input type="submit" value="Gravar" />
+    </form>
+{% endblock %}

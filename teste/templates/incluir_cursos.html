@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Preencha os Campos</h2>
+    <form method="post">
+        {{ form }}
+        {% csrf_token %}
+        <input type="submit" value="Gravar" />
+    </form>
+{% endblock %}

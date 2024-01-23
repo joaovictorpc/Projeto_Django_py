@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+   <h2>Listar Cursos</h2>
+   <a href="{% url 'incluir_cursos' %}" class = 'btn btn-primary'> Cadastrar novo Curso </a>
+   <table class="table table-striped">
+        <thead>
+           <tr>
+               <th> Curso </th>
+               <th>Carga Horária</th>     
+               <th> Investimento </th>
+           </tr>
+     
+        </thead>
+        <tbody>
+             {% for  a in cursos %}
+               <tr> 
+                  <td>{{a.nome_do_curso}}</td>
+                  <td>{{a.Carga_horária}}</td>
+                  <td>{{a.investimento}}</td>
+                  <td><a href="{% url 'editar_curso' a.id %}"class ='btn btn-secondary'>Editar</a>
+                     <a href="{% url 'excluir_curso' a.id %}" class = 'btn btn-danger'>Excluir</a>
+                  
+                  </td>
+                  
+               </tr>
+              {% endfor %}             
+        </tbody>
+   </table>
+{% endblock %}
