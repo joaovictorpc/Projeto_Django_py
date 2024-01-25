@@ -1,4 +1,5 @@
 {% load django_bootstrap5 %}
+{% load bootstrap_icons %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -36,12 +37,62 @@
             </div>
         </div>    
     </nav>
-                                     
+                                    
 <body>
     
     {% block content %}
     {% endblock %}
 </div>
+<div class="modal fade" id="telaAviso" tabindex="-1" role="dialog"
+aria-labelledby="telaAvisoLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">Exclusão</h4>
+        </div>
+        <form id ="modalform">
+            <div class ="modal-body">
+                <label>Deseja Excluir?</label>
+            </div>
+            <div class="modal-header">
+                <button type ="button" class ="btn btn-secondary"
+                data-dismiss="modal"
+                onclick="fechartela()">cancelar</button>
+                <button type ="button" class ="btn btn-danger"
+                data-dismiss="modal"
+                onclick="excluir()">Excluir</button>
+                {% csrf_token %}
+            </div>
+        </form>
+       
+    </div>
+</div>
+</div>
+
+<script>
+caminho = "";
+var telaAviso = document.getElementById("telaAviso");
+function abrirTela(url){
+    
+    telaAviso.style.display = "block";
+    telaAviso.className = "modal fade show";
+    caminho = url;
+}
+function fechartela(){
+    telaAviso.style.display="none";
+    telaAviso.className ="modal fade";
+}
+function excluir(){
+    window.location = caminho;
+    fecharTela();
+}
+</script>
+
+
+      
+
+      </div>  
+      </div>
 
 </body>
 {% bootstrap_javascript %}

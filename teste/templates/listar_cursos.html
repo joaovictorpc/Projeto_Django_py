@@ -18,7 +18,9 @@
                   <td>{{a.Carga_horária}}</td>
                   <td>{{a.investimento}}</td>
                   <td><a href="{% url 'editar_curso' a.id %}"class ='btn btn-secondary'>Editar</a>
-                     <a href="{% url 'excluir_curso' a.id %}" class = 'btn btn-danger'>Excluir</a>
+                     <a href="javascript:void(0)"
+                         onclick="abrirTela('{% url 'excluir_curso' a.id %}')"
+                         class="btn btn-danger">Excluir</a>
                   
                   </td>
                   

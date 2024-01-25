@@ -7,7 +7,11 @@ def index (request):
     return render(request,'inicio.html')
 
 def listar_Aluno(request):
-     alunos = Aluno.objects.all().order_by('id') 
+     busca= request.GET.get('busca')
+     if busca:
+         alunos= Aluno.objects.filter(nome__icontais=busca).extra(select={'novo':'lower(nome)'}).order_by('novo')
+     else:    
+         alunos = Aluno.objects.all().extra(select={'novo':'lower(nome)'}).order_by('novo') 
      return render(request,'listar_aluno.html',
                   {'alunos': alunos}) 
 

@@ -1,8 +1,22 @@
 
 {% extends 'base.html' %}
+{% load bootstrap_icons %}
 {% block content %}
    <h2>Listar Alunos</h2>
-   <a href="{% url 'incluir_aluno' %}" class = 'btn btn-primary'> Cadastrar novo aluno </a>
+   <a href="{% url 'incluir_aluno' %}" class = 'btn btn-primary'> 
+      Cadastrar novo aluno </a>
+
+      <form method="get">
+           <div class = "input-group mb-3">
+                <input   type="text" class="form-control" 
+                         placeholder="Digite parte do Nome para busca" 
+                         aria-label="Digite parte do Nome para busca"
+                         name="nome"
+                          aria-describedby="botao-busca">
+                <button class ="btn btn-outline-secondary" type="submit"
+                          id="botao-busca">{% bs_icon 'search' %}</button>
+           </div>
+      </form>
    <table class="table table-striped">
         <thead>
            <tr>
@@ -20,7 +34,9 @@
                   <td>{{a.email}}</td>
                   <td>
                      <a href="{% url 'editar_aluno' a.id %}" class ='btn btn-secondary'>Editar</a>
-                     <a href="{% url 'excluir_aluno' a.id %}"class = 'btn btn-danger'>Excluir</a>
+                     <a href="javascript:void(0)"
+                         onclick="abrirTela('{% url 'excluir_aluno' a.id %}')"
+                         class="btn btn-danger">Excluir</a>
                   </td>
                   
                </tr>
